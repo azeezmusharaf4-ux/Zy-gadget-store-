@@ -1,0 +1,6 @@
+{
+  "name": "ZY GADGET STORE",
+  "description": "Production-ready gadget and smartphone store with real-time catalogue and owner management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

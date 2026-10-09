@@ -1,0 +1,298 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A gadget or electronic product sold in the store",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique product ID",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the gadget or smartphone",
+          "maxLength": 200
+        },
+        "brand": {
+          "type": "string",
+          "description": "Brand or manufacturer",
+          "maxLength": 100
+        },
+        "category": {
+          "type": "string",
+          "description": "Product category",
+          "maxLength": 100
+        },
+        "price": {
+          "type": "number",
+          "description": "Selling price in current currency"
+        },
+        "originalPrice": {
+          "type": "number",
+          "description": "Optional previous or regular price before discount"
+        },
+        "description": {
+          "type": "string",
+          "description": "Full product description and key highlights",
+          "maxLength": 5000
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Primary product image URL",
+          "maxLength": 2000
+        },
+        "additionalImages": {
+          "type": "array",
+          "description": "List of secondary image URLs"
+        },
+        "stock": {
+          "type": "number",
+          "description": "Available stock quantity"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Product condition",
+          "enum": ["Brand New", "Open Box", "Refurbished", "Used - Like New", "Used - Good"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Availability status",
+          "enum": ["in_stock", "low_stock", "out_of_stock", "pre_order", "archived"]
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "description": "Whether to highlight on homepage"
+        },
+        "specifications": {
+          "type": "string",
+          "description": "Technical specs text or structured notes",
+          "maxLength": 3000
+        },
+        "colors": {
+          "type": "string",
+          "description": "Available color options",
+          "maxLength": 300
+        },
+        "storageCapacity": {
+          "type": "string",
+          "description": "Storage options (e.g. 128GB, 256GB)",
+          "maxLength": 300
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp or server creation time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp or server update time"
+        }
+      },
+      "required": ["name", "brand", "category", "price", "stock", "condition", "status"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product category definition",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Category document ID",
+          "maxLength": 100
+        },
+        "name": {
+          "type": "string",
+          "description": "Category title",
+          "maxLength": 100
+        },
+        "slug": {
+          "type": "string",
+          "description": "Category URL slug",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "Category brief description",
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["name", "slug"]
+    },
+    "OrderInquiry": {
+      "title": "OrderInquiry",
+      "description": "Customer order inquiry for gadgets",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Inquiry identifier",
+          "maxLength": 128
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Full name of customer",
+          "maxLength": 150
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "Contact email address",
+          "maxLength": 200
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Contact telephone or WhatsApp number",
+          "maxLength": 50
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "description": "Shipping or pickup notes",
+          "maxLength": 500
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total order amount"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order inquiry state",
+          "enum": ["pending", "contacted", "processing", "completed", "cancelled"]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Customer message or additional requests",
+          "maxLength": 1000
+        },
+        "contactMethod": {
+          "type": "string",
+          "description": "Preferred contact channel",
+          "enum": ["whatsapp", "phone", "email"]
+        },
+        "userId": {
+          "type": "string",
+          "description": "Optional authenticated customer user ID",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Submission timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Update timestamp"
+        }
+      },
+      "required": ["customerName", "customerPhone", "totalAmount", "status", "contactMethod"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Configurable store contact and branding information",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Settings ID",
+          "maxLength": 50
+        },
+        "storeName": {
+          "type": "string",
+          "description": "Store display name",
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer support phone number",
+          "maxLength": 50
+        },
+        "whatsapp": {
+          "type": "string",
+          "description": "Store WhatsApp number for inquiries",
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "description": "Store support email",
+          "maxLength": 150
+        },
+        "address": {
+          "type": "string",
+          "description": "Store physical location or pickup center",
+          "maxLength": 300
+        },
+        "businessHours": {
+          "type": "string",
+          "description": "Store operational hours",
+          "maxLength": 200
+        },
+        "announcement": {
+          "type": "string",
+          "description": "Header announcement bar text",
+          "maxLength": 300
+        },
+        "currencySymbol": {
+          "type": "string",
+          "description": "Display currency symbol",
+          "maxLength": 10
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp of settings update"
+        }
+      },
+      "required": ["storeName", "phone", "whatsapp", "email"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Privileged store administrator record",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Admin User UID",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "Admin email address",
+          "maxLength": 200
+        },
+        "role": {
+          "type": "string",
+          "description": "Assigned administrative role",
+          "enum": ["owner", "admin"]
+        },
+        "addedAt": {
+          "type": "string",
+          "description": "Timestamp added"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Product catalogue items managed by store owner and viewed by customers"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Store categories managed by store owner"
+    },
+    "/orders/{orderId}": {
+      "schema": "OrderInquiry",
+      "description": "Customer purchase inquiries submitted to the store"
+    },
+    "/settings/{settingId}": {
+      "schema": "StoreSettings",
+      "description": "Store configuration and contact details"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Store administrators with management permissions"
+    }
+  }
+}
